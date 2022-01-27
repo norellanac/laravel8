@@ -27,5 +27,5 @@ require __DIR__.'/auth.php';
 
 //...
 
-Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 
