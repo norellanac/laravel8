@@ -15,7 +15,7 @@ use App\Http\Controllers\BotManController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.landingPage');
 });
 
 Route::get('/dashboard', function () {
