@@ -4,6 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use App\Models\City;
+use App\Models\Coin;
+use App\Models\Company;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\User;
+use App\Models\Lenguage;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+
 class StartProjectSeeder extends Seeder
 {
     /**
@@ -15,7 +25,7 @@ class StartProjectSeeder extends Seeder
     {
        //
         $if_existCountry = Country::first();
-        if (!$if_existTypeIdentify) {
+        if (!$if_existCountry) {
             $record = new Country();
             $record->name = 'Guatemala';
             $record->code_phone = '502';
@@ -1929,7 +1939,7 @@ class StartProjectSeeder extends Seeder
         $if_existRole = Role::first();
         if (!$if_existRole) {
             $record = new Role();
-            $record->name = 'SuperAdministrador';
+            $record->name = 'SuperAdministrador';
             $record->save();
 
             $record = new Role();
@@ -1951,10 +1961,9 @@ class StartProjectSeeder extends Seeder
             $record = new User;
             $record->name = 'norellanac';
             $record->password = Hash::make('12341234');
-            $record->country_id = 1;
             $record->email="norellana@homeland.com.gt";
             $record->save();
-            $record->syncRoles('SuperAdministrador');
+            $record->syncRoles('SuperAdministrador');
         }
         $ifexistCoin = Coin::first();
         if (!$ifexistCoin) {
@@ -1969,35 +1978,35 @@ class StartProjectSeeder extends Seeder
             $record->save();
         }
 
-        $ifexistLanguage = Language::first();
-        if (!$ifexistLanguage) {
+        $ifexistLenguage = Lenguage::first();
+        if (!$ifexistLenguage) {
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'Español';
             $record->short_name = 'es';
             $record->save();
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'English';
             $record->short_name = 'en';
             $record->save();
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'Quiché';
             $record->short_name = 'Quiché';
             $record->save();
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'Mam';
             $record->short_name = 'Mam';
             $record->save();
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'kaqchikel';
             $record->short_name = 'kaqchikel';
             $record->save();
 
-            $record = new Language;
+            $record = new Lenguage;
             $record->name = 'Poqomam';
             $record->short_name = 'Poqomam';
             $record->save();

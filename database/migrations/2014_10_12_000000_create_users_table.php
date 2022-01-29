@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         // idiomas
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('lenguages', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
             $table->string('name')->comment(''); // 
             $table->string('short_name')->comment('abreviatura'); // 
@@ -64,6 +64,7 @@ class CreateUsersTable extends Migration
         
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
+            $table->string('name')->comment('');
             $table->string('second_name')->nullable()->comment('segundo nombre'); //
             $table->string('lastname')->nullable()->comment('apellido'); //
             $table->string('second_lastname')->nullable()->comment('segundo apellido'); //
