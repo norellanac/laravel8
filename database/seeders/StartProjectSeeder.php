@@ -12,6 +12,7 @@ use App\Models\State;
 use App\Models\User;
 use App\Models\Lenguage;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 
 class StartProjectSeeder extends Seeder
@@ -1936,10 +1937,30 @@ class StartProjectSeeder extends Seeder
 
        
 
-        $if_existRole = Role::first();
+        
+
+
+        $permissions = [
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'blog-list',
+            'blog-create',
+            'blog-edit',
+            'blog-delete'
+         ];
+
+         foreach ($permissions as $permission) {
+              Permission::create(['name' => $permission]);
+         }
+
+         $if_existRole = Role::first();
         if (!$if_existRole) {
             $record = new Role();
             $record->name = 'SuperAdministrador';
+            $permissions = Permission::pluck('id','id')->all();
+            $record->syncPermissions($permissions);
             $record->save();
 
             $record = new Role();
@@ -1955,6 +1976,7 @@ class StartProjectSeeder extends Seeder
             $record->name = 'Usuario';
             $record->save();
         }
+
         $ifexistUser = User::first();
         if (!$ifexistUser) {
 
