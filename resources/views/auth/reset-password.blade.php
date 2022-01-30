@@ -1,5 +1,12 @@
 @extends('layouts.guest')
 @section('content')
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            {{ $error }}.
+        </div>
+    @endforeach
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
 

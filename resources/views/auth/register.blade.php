@@ -1,9 +1,15 @@
 @extends('layouts.guest')
 @section('content')
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            {{ $error }}.
+        </div>
+    @endforeach
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
-
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="input-group mb-3">
