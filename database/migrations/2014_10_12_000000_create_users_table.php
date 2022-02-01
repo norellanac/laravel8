@@ -97,6 +97,7 @@ class CreateUsersTable extends Migration
             /*******codigo de municipio de nacimiento*******/
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes()->comment('borrar registro'); // 
         });
 
 

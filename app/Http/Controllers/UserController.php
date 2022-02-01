@@ -121,7 +121,7 @@ class UserController extends Controller
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
         $user->assignRole($request->input('roles'));
-
+        
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
@@ -138,5 +138,18 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+
+
+    public function displayLoginHistory()
+    {
+        $users = User::all();
+        foreach ($users as $record) {
+            if ($record->authentications) {
+                $authUser = $record->authentications;
+            }
+        }
+        /* dd($authUser); */
+        return view('users.session', ['users' => $users]);
     }
 }

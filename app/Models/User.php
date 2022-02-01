@@ -9,10 +9,15 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Yadahan\AuthenticationLog\AuthenticationLogable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticationLogable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, AuthenticationLogable, HasRoles, LogsActivity, SoftDeletes;
     
 
     /**
@@ -25,6 +30,12 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+
+    //******activity logs*********** */
+    protected static $logAttributes = ['*'];
+    protected static $logName = 'User';
+    static $logFillable = true;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +55,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "This model has been {$eventName}";
+    }
+    
 }
