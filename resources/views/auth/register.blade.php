@@ -31,6 +31,15 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
+                    <input id="phone" type="number" name="phone" value="{{ old('phone') }}" required class="form-control"
+                        placeholder="Phone">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-mobile"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
                     <input id="password" type="password" name="password" required autocomplete="new-password"
                         class="form-control" placeholder="Password">
                     <div class="input-group-append">

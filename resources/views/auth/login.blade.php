@@ -13,11 +13,13 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input class="form-control" placeholder="Email" id="email" type="email" name="email"
+                    <input class="form-control" placeholder="Email or phone number" id="email" type="email" name="email"
                         value="{{ old('email') }}" required autofocus />
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
+                            /
+                            <span class="fas fa-phone"></span>
                         </div>
                     </div>
                 </div>

@@ -1984,6 +1984,7 @@ class StartProjectSeeder extends Seeder
             $record->name = 'norellanac';
             $record->password = Hash::make('12341234');
             $record->email="norellana@homeland.com.gt";
+            $record->phone =33120413;
             $record->save();
             $record->syncRoles('SuperAdministrador');
         }
