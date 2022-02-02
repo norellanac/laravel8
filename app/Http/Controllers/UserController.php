@@ -11,6 +11,16 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
+
+    /**
+     * @OA\Get(
+     *     path="/projects",
+     *     @OA\Response(response="200", description="Display a listing of projects.")
+     * )
+     */
+
+
     /**
      * Display a listing of the resource.
      *
