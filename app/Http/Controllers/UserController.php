@@ -84,6 +84,8 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+        $user->userRoles;
+        dd($user);
         return view('users.show',compact('user'));
     }
 

@@ -16,6 +16,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, AuthenticationLogable, HasRoles, LogsActivity, SoftDeletes;
@@ -56,6 +59,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country()
+    {
+        return $this->hasOne("App\Models\Country", 'id', 'country_id');
+    }
+    public function state()
+    {
+        return $this->hasOne("App\Models\State", 'id', 'states_id');
+    }
+
+    public function city()
+    {
+        return $this->hasOne("App\Models\City", 'id', 'cities_id');
+    }
+
+    public function userRoles()
+    {
+        return $this->hasMany('App\Models\ModelHasRole', 'model_id', );
+    }
+
 
 
 
