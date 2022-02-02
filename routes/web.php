@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 
+
 use App\Http\Controllers\BotManController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,4 +39,5 @@ require __DIR__.'/auth.php';
 //...
 
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
-
+Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
+Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);

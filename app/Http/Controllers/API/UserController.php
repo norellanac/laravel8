@@ -34,6 +34,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = User::create($request->validated());
+
+        return new UserResource($user);
     }
 
     /**
@@ -45,6 +48,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        return new UserResource(USer::find($id));
     }
 
     /**
@@ -57,6 +61,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user->update($request->validated());
+
+        return new UserResource($user);
     }
 
     /**
@@ -68,5 +75,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user->delete();
+
+        return response()->noContent();
     }
 }
