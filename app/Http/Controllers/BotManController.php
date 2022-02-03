@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
 use BotMan\BotMan\Drivers\DriverManager;
 
+use BotMan\BotMan\Cache\LaravelCache;
+
 class BotManController extends Controller
 {
     /**
@@ -27,7 +29,14 @@ class BotManController extends Controller
         // Load the driver(s) you want to use
         DriverManager::loadDriver(\BotMan\Drivers\Web\WebDriver::class);        
         // Create an instance
-        $botman = BotManFactory::create($config);
+
+        //cache for web 
+        $botman = BotManFactory::create([
+            'config' => [
+                'user_cache_time' => 30000,
+                'conversation_cache_time' => 30000,
+            ],
+        ],  new LaravelCache());
 
         $botman->hears('Hi', function ($bot) {
             $bot->reply('Hello!');
@@ -42,6 +51,11 @@ class BotManController extends Controller
         // Give the bot something to listen for.
         $botman->hears('hello', function (BotMan $bot) {
             $bot->reply('Hello yourself.');
+        });
+
+        $botman->hears('wait', function (BotMan $bot) {
+            $bot->typesAndWaits(2);
+            $bot->reply("Tell me more!");
         });
          
         /* $botman->fallback(function($bot) {
