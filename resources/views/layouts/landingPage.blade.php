@@ -33,18 +33,18 @@ FACEBOOK: https://www.facebook.com/themefisher
     <meta name="generator" content="Themefisher Small Apps Template v1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('landingPage/images/favicon.png') }}" />
 
     <!-- PLUGINS CSS STYLE -->
-    <link rel="stylesheet" href="landingPage/plugins/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="landingPage/plugins/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="landingPage/plugins/slick/slick.css">
-    <link rel="stylesheet" href="landingPage/plugins/slick/slick-theme.css">
-    <link rel="stylesheet" href="landingPage/plugins/fancybox/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="landingPage/plugins/aos/aos.css">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/fancybox/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('landingPage/plugins/aos/aos.css') }}">
 
     <!-- CUSTOM CSS -->
-    <link href="landingPage/css/style.css" rel="stylesheet">
+    <link href="{{ asset('landingPage/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -53,7 +53,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 
     <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="index.html"><img src="{{ asset('landingPage/images/logo.png') }}" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="ti-menu"></span>
@@ -66,17 +66,17 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </a>
                         <!-- Dropdown list -->
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="index.html">Homepage</a></li>
-                            <li><a class="dropdown-item" href="homepage-2.html">Homepage 2</a></li>
-                            <li><a class="dropdown-item active3" href="homepage-3.html">Homepage 3</a></li>
+                            <li><a class="dropdown-item active" href="landingPage/index.html">Homepage</a></li>
+                            <li><a class="dropdown-item" href="landingPage/homepage-2.html">Homepage 2</a></li>
+                            <li><a class="dropdown-item active3" href="landingPage/homepage-3.html">Homepage 3</a></li>
 
                             <li class="dropdown dropdown-submenu dropright">
-                                <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button"
+                                <a class="dropdown-item dropdown-toggle" href="landingPage/#!" id="dropdown0301" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdown0301">
-                                    <li><a class="dropdown-item" href="index.html">Submenu 11</a></li>
-                                    <li><a class="dropdown-item" href="index.html">Submenu 12</a></li>
+                                    <li><a class="dropdown-item" href="landingPage/index.html">Submenu 11</a></li>
+                                    <li><a class="dropdown-item" href="landingPage/index.html">Submenu 12</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -87,33 +87,33 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </a>
                         <!-- Dropdown list -->
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item @@team" href="team.html">Team</a></li>
-                            <li><a class="dropdown-item @@career" href="career.html">Career</a></li>
-                            <li><a class="dropdown-item @@blog" href="blog.html">Blog</a></li>
-                            <li><a class="dropdown-item @@blogSingle" href="blog-single.html">Blog Single</a></li>
-                            <li><a class="dropdown-item @@privacy" href="privacy-policy.html">Privacy</a></li>
-                            <li><a class="dropdown-item @@faq" href="FAQ.html">FAQ</a></li>
-                            <li><a class="dropdown-item" href="sign-in.html">Sign In</a></li>
-                            <li><a class="dropdown-item" href="sign-up.html">Sign Up</a></li>
-                            <li><a class="dropdown-item" href="404.html">404</a></li>
-                            <li><a class="dropdown-item" href="comming-soon.html">Coming Soon</a></li>
+                            <li><a class="dropdown-item @@team" href="landingPage/team.html">Team</a></li>
+                            <li><a class="dropdown-item @@career" href="landingPage/career.html">Career</a></li>
+                            <li><a class="dropdown-item @@blog" href="landingPage/blog.html">Blog</a></li>
+                            <li><a class="dropdown-item @@blogSingle" href="landingPage/blog-single.html">Blog Single</a></li>
+                            <li><a class="dropdown-item @@privacy" href="landingPage/privacy-policy.html">Privacy</a></li>
+                            <li><a class="dropdown-item @@faq" href="landingPage/FAQ.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="landingPage/sign-in.html">Sign In</a></li>
+                            <li><a class="dropdown-item" href="landingPage/sign-up.html">Sign Up</a></li>
+                            <li><a class="dropdown-item" href="landingPage/404.html">404</a></li>
+                            <li><a class="dropdown-item" href="landingPage/comming-soon.html">Coming Soon</a></li>
 
                             <li class="dropdown dropdown-submenu dropleft">
                                 <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                                    <li><a class="dropdown-item" href="index.html">Submenu 21</a></li>
-                                    <li><a class="dropdown-item" href="index.html">Submenu 22</a></li>
+                                    <li><a class="dropdown-item" href="landingPage/index.html">Submenu 21</a></li>
+                                    <li><a class="dropdown-item" href="landingPage/index.html">Submenu 22</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item @@about">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="landingPage/about.html">About</a>
                     </li>
                     <li class="nav-item @@contact">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="landingPage/contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -152,7 +152,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                     <a href="FAQ.html" class="btn btn-main-md">Download Now</a>
                 </div>
                 <div class="col-md-6 text-center order-1 order-md-2">
-                    <img class="img-fluid" src="images/mobile.png" alt="screenshot">
+                    <img class="img-fluid" src="{{ asset('landingPage/images/mobile.png') }}" alt="screenshot">
                 </div>
             </div>
         </div>
@@ -199,7 +199,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="col-lg-6 ml-auto justify-content-center">
                     <!-- Feature Mockup -->
                     <div class="image-content" data-aos="fade-right">
-                        <img class="img-fluid" src="images/feature/feature-new-01.jpg" alt="iphone">
+                        <img class="img-fluid" src="{{ asset('landingPage/images/feature/feature-new-01.jpg') }}"
+                            alt="iphone">
                     </div>
                 </div>
                 <div class="col-lg-6 mr-auto align-self-center">
@@ -224,7 +225,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </p>
                         <ul class="list-inline meta">
                             <li class="list-inline-item">
-                                <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="">
+                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}" alt="">
                             </li>
                             <li class="list-inline-item">Jonathon Andrew , Themefisher.com</li>
                         </ul>
@@ -259,7 +260,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </p>
                         <ul class="list-inline meta">
                             <li class="list-inline-item">
-                                <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="">
+                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}" alt="">
                             </li>
                             <li class="list-inline-item">Jonathon Andrew , Themefisher.com</li>
                         </ul>
@@ -268,7 +269,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="col-lg-6 mr-auto justify-content-center">
                     <!-- Feature mockup -->
                     <div class="image-content" data-aos="fade-left">
-                        <img class="img-fluid" src="images/feature/feature-new-02.jpg" alt="ipad">
+                        <img class="img-fluid" src="{{ asset('landingPage/images/feature/feature-new-02.jpg') }}"
+                            alt="ipad">
                     </div>
                 </div>
             </div>
@@ -295,7 +297,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="col-lg-6 align-self-center">
                     <!-- Feature Image -->
                     <div class="service-thumb left" data-aos="fade-right">
-                        <img class="img-fluid" src="images/feature/iphone-ipad.jpg" alt="iphone-ipad">
+                        <img class="img-fluid" src="{{ asset('landingPage/images/feature/iphone-ipad.jpg') }}"
+                            alt="iphone-ipad">
                     </div>
                 </div>
                 <div class="col-lg-5 mr-auto align-self-center">
@@ -407,7 +410,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                                 </p>
                                 <!-- Person Thumb -->
                                 <div class="image">
-                                    <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="image">
+                                    <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                        alt="image">
                                 </div>
                                 <!-- Name and Company -->
                                 <cite>Abraham Linkon , Themefisher.com</cite>
@@ -428,7 +432,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                                 </p>
                                 <!-- Person Thumb -->
                                 <div class="image">
-                                    <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="image">
+                                    <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                        alt="image">
                                 </div>
                                 <!-- Name and Company -->
                                 <cite>Abraham Linkon , Themefisher.com</cite>
@@ -449,7 +454,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                                 </p>
                                 <!-- Person Thumb -->
                                 <div class="image">
-                                    <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="image">
+                                    <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                        alt="image">
                                 </div>
                                 <!-- Name and Company -->
                                 <cite>Abraham Linkon , Themefisher.com</cite>
@@ -470,7 +476,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                                 </p>
                                 <!-- Person Thumb -->
                                 <div class="image">
-                                    <img src="images/testimonial/feature-testimonial-thumb.jpg" alt="image">
+                                    <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                        alt="image">
                                 </div>
                                 <!-- Name and Company -->
                                 <cite>Abraham Linkon , Themefisher.com</cite>
@@ -527,7 +534,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="row">
                     <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
                         <div class="block">
-                            <a href="index.html"><img src="images/logo-alt.png" alt="footer-logo"></a>
+                            <a href="index.html"><img src="{{ asset('landingPage/images/logo-alt.png') }}" alt="footer-logo"></a>
                             <!-- Social Site Icons -->
                             <ul class="social-icon list-inline">
                                 <li class="list-inline-item">
@@ -629,12 +636,13 @@ FACEBOOK: https://www.facebook.com/themefisher
     <script src="landingPage/js/script.js"></script>
 
     {{-- *********CHATBOOT PHP***** --}}
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
     <script>
         var botmanWidget = {
             aboutText: 'Write Something',
-            introMessage: "✋ Hi! I'm form Online Web Tutor"
+            title: "{{ config('app.name', 'Laravel') }}",
+            introMessage: "✋ Hi! I'm your Botman Agent",
+            bubbleAvatarUrl: 'https://botman.io/img/logo.png',
+            //chatServer: "http://192.168.0.10:8000/botman",
         };
     </script>
 

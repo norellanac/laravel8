@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 
 
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\LandingPageController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\SocialController;
 /*
@@ -20,9 +21,7 @@ use App\Http\Controllers\SocialController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.landingPage');
-});
+Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
