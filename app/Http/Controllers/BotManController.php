@@ -32,6 +32,9 @@ class BotManController extends Controller
         // Load the driver(s) you want to use
         DriverManager::loadDriver(\BotMan\Drivers\Web\WebDriver::class);        
         // Create an instance
+        DriverManager::loadDriver(\BotMan\Drivers\Telegram\TelegramDriver::class);
+        //make sure to disable CORS for botman route or put it on routes api
+        ///app/Http/Middleware/VerifyCsrfToken.php
 
         //cache for web 
         $botman = BotManFactory::create([
@@ -39,7 +42,11 @@ class BotManController extends Controller
                 'user_cache_time' => 30000,
                 'conversation_cache_time' => 30000,
             ],
+            'telegram' => [
+                'token' => '5289185607:AAHJFYLAd7QvgoGhgC12AbUh0gNyMtwGxCs',
+            ],
         ],  new LaravelCache());
+
 
         $botman->hears('Hi', function ($bot) {
             $bot->reply('Hello!');
