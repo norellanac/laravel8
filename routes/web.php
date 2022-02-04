@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
-
-
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\LandingPageController;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\SocialController;
+
+use Laravel\Socialite\Facades\Socialite;
+
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,10 +28,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
+//prexis routes for admin routes
+Route::prefix('admin')->group(function () {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
+    });
 });
+
+
+//route to return nicknames o personal urls
+Route::get('/users/{name}', function ($name) {
+    return User::find(1)->email;
+});
+
+
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 require __DIR__.'/auth.php';
 

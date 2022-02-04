@@ -623,17 +623,17 @@ FACEBOOK: https://www.facebook.com/themefisher
     </div>
 
     <!-- JAVASCRIPTS -->
-    <script src="landingPage/plugins/jquery/jquery.min.js"></script>
-    <script src="landingPage/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="landingPage/plugins/slick/slick.min.js"></script>
-    <script src="landingPage/plugins/fancybox/jquery.fancybox.min.js"></script>
-    <script src="landingPage/plugins/syotimer/jquery.syotimer.min.js"></script>
-    <script src="landingPage/plugins/aos/aos.js"></script>
+    <script src="{{ asset('landingPage/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('landingPage/plugins/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('landingPage/plugins/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('landingPage/plugins/fancybox/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('landingPage/plugins/syotimer/jquery.syotimer.min.js') }}"></script>
+    <script src="{{ asset('landingPage/plugins/aos/aos.js') }}"></script>
     <!-- google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
-    <script src="landingPage/plugins/google-map/gmap.js"></script>
+    <script src="{{ asset('landingPage/plugins/google-map/gmap.js') }}"></script>
 
-    <script src="landingPage/js/script.js"></script>
+    <script src="{{ asset('landingPage/js/script.js') }}"></script>
 
     {{-- *********CHATBOOT PHP***** --}}
     <script>

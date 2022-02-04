@@ -16,30 +16,30 @@ class CreateUsersTable extends Migration
         // idiomas
         Schema::create('lenguages', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
-            $table->string('name')->comment(''); // 
-            $table->string('short_name')->comment('abreviatura'); // 
-            $table->timestamps(); //
-            $table->string('url_image')->nullable()->comment('url de la imagen'); //
-            $table->softDeletes()->comment('borrar registro'); // 
+            $table->string('name')->comment(''); 
+            $table->string('short_name')->comment('abreviatura'); 
+            $table->timestamps();
+            $table->string('url_image')->nullable()->comment('url de la imagen');
+            $table->softDeletes()->comment('borrar registro'); 
         });
         // monedas
         Schema::create('coins', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
-            $table->string('name')->comment('nombre Quetzal o dolar'); //
-            $table->string('short_name')->comment('abreviatura'); // 
-            $table->timestamps(); //
-            $table->string('url_image')->nullable()->comment('url de la imagen'); //
-            $table->softDeletes()->comment('borrar registro'); // 
+            $table->string('name')->comment('nombre Quetzal o dolar');
+            $table->string('short_name')->comment('abreviatura'); 
+            $table->timestamps();
+            $table->string('url_image')->nullable()->comment('url de la imagen');
+            $table->softDeletes()->comment('borrar registro'); 
         });
         // paises
         Schema::create('countries', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
-            $table->string('name')->comment('nombre del pais - country'); //
-            $table->string('code_phone')->nullable()->comment('codigo de telefono'); //
-            $table->string('code_country')->nullable()->comment('codigo pais'); // 
-            $table->string('url_image')->nullable()->comment('url de la imagen'); //
-            $table->timestamps(); //
-            $table->softDeletes()->comment('borrar registro'); // 
+            $table->string('name')->comment('nombre del pais - country');
+            $table->string('code_phone')->nullable()->comment('codigo de telefono');
+            $table->string('code_country')->nullable()->comment('codigo pais'); 
+            $table->string('url_image')->nullable()->comment('url de la imagen');
+            $table->timestamps();
+            $table->softDeletes()->comment('borrar registro'); 
         });
 
         // departamentos o estados
@@ -48,8 +48,8 @@ class CreateUsersTable extends Migration
             $table->string('name')->comment('');
             $table->unsignedBigInteger('country_id')->comment('');
             $table->foreign('country_id')->references('id')->on('countries')->comment('');
-            $table->timestamps(); //
-            $table->softDeletes()->comment('borrar registro'); // 
+            $table->timestamps();
+            $table->softDeletes()->comment('borrar registro'); 
         });
 
         // municipios o ciudades
@@ -58,29 +58,29 @@ class CreateUsersTable extends Migration
             $table->string('name')->comment('');
             $table->unsignedBigInteger('states_id')->comment('');
             $table->foreign('states_id')->references('id')->on('states');
-            $table->timestamps(); //
-            $table->softDeletes()->comment('borrar registro'); // 
+            $table->timestamps();
+            $table->softDeletes()->comment('borrar registro');
         });
         
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
             $table->string('name')->comment('');
-            $table->string('second_name')->nullable()->comment('segundo nombre'); //
-            $table->string('lastname')->nullable()->comment('apellido'); //
-            $table->string('second_lastname')->nullable()->comment('segundo apellido'); //
+            $table->string('second_name')->nullable()->comment('segundo nombre');
+            $table->string('lastname')->nullable()->comment('apellido');
+            $table->string('second_lastname')->nullable()->comment('segundo apellido');
             $table->string('email')->unique()->comment('');
             $table->timestamp('email_verified_at')->nullable()->comment('');
             $table->string('password')->comment(''); 
             $table->string('phone', 50)->nullable()->unique()->comment('');
             $table->date('birthday')->nullable()->comment('fecha de nacimiento'); 
-            $table->string('url_image')->nullable()->comment('url de la imagen'); //
-            $table->text('address')->nullable()->comment('direccion de residencia'); //
-            $table->integer('gender')->default(3)->comment('genro 0-no binario, 1-hombre, 2-Mujer, 3-prefiero no decirlo'); //
-            $table->string('job_position')->nullable()->comment(''); //
-            $table->bigInteger('legal_id')->unique()->nullable()->comment('Codigo de identificacion DPI'); //
-            $table->boolean('is_verified_id')->default(false)->comment('true 1 , false 0'); //
-            $table->integer('civil_status')->default(3)->comment('0-soltero, 1-casado, 2-viudo, 3-prefiero no decirlo'); //
-            $table->string('education')->nullable()->comment('Maestria, Universidad, Diversificado, Basicos'); //
+            $table->string('url_image')->nullable()->comment('url de la imagen');
+            $table->text('address')->nullable()->comment('direccion de residencia');
+            $table->integer('gender')->default(3)->comment('genro 0-no binario, 1-hombre, 2-Mujer, 3-prefiero no decirlo');
+            $table->string('job_position')->nullable()->comment('');
+            $table->bigInteger('legal_id')->unique()->nullable()->comment('Codigo de identificacion DPI');
+            $table->boolean('is_verified_id')->default(false)->comment('true 1 , false 0');
+            $table->integer('civil_status')->default(3)->comment('0-soltero, 1-casado, 2-viudo, 3-prefiero no decirlo');
+            $table->string('education')->nullable()->comment('Maestria, Universidad, Diversificado, Basicos');
             
 
             /*******codigo de pais de nacimiento*******/
