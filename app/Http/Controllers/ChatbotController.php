@@ -7,6 +7,25 @@ use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
 {
+    
+    /**
+    * @OA\Get(
+    *     path="/chatbot",
+    *      operationId="gel all records",
+    *      tags={"chatbot"},
+    *      summary="Get records information",
+    *      description="Returns records data",
+    *     @OA\Response(
+    *          response=200,
+    *          description="successful operation"
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    *       security={
+    *           {"api_key_security_example": {}}
+    *       }
+    * )
+    */
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +34,8 @@ class ChatbotController extends Controller
     public function index()
     {
         //
+        return view('chatbot.index');
+
     }
 
     /**
@@ -25,6 +46,7 @@ class ChatbotController extends Controller
     public function create()
     {
         //
+        return view('chatbot.create');
     }
 
     /**

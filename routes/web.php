@@ -7,6 +7,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\ChatbotController;
+
 
 use Laravel\Socialite\Facades\Socialite;
 
@@ -33,6 +35,7 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['auth']], function() {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
+        Route::resource('chatbot', ChatbotController::class);
     });
 });
 

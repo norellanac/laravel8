@@ -18,19 +18,19 @@ class UserController extends Controller
     /**
     * @OA\Get(
     *     path="/api/v1/users",
-     *      operationId="gel all records",
-     *      tags={"users"},
-     *      summary="Get records information",
-     *      description="Returns records data",
+    *      operationId="gel all records",
+    *      tags={"users"},
+    *      summary="Get records information",
+    *      description="Returns records data",
     *     @OA\Response(
     *          response=200,
     *          description="successful operation"
     *       ),
     *      @OA\Response(response=400, description="Bad request"),
     *      @OA\Response(response=404, description="Resource Not Found"),
- *       security={
- *           {"api_key_security_example": {}}
- *       }
+    *       security={
+    *           {"api_key_security_example": {}}
+    *       }
     * )
     */
 
