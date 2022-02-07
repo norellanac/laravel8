@@ -15,7 +15,7 @@ class CreateChatbotsTable extends Migration
     {
         Schema::create('chatbots', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
-            $table->string('key_word')->comment('word or sentence for start an specific chat');
+            $table->string('keyword')->unique()->comment('word or sentence for start an specific chat');
             $table->softDeletes()->comment('delete record from sistem, not from database');  
             $table->timestamps();
         });
@@ -34,7 +34,7 @@ class CreateChatbotsTable extends Migration
 
         Schema::create('chatbots_answers', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
-            $table->string('key_word')->comment('expected reply from user');
+            $table->string('keyword')->unique()->comment('expected reply from user');
             $table->string('description')->comment('answer or say to user');
             $table->softDeletes()->comment('delete record from sistem, not from database'); 
             $table->string('url_image')->nullable()->comment('image url attachet to a answer'); 
@@ -59,6 +59,8 @@ class CreateChatbotsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('chatbots_answers');
+        Schema::dropIfExists('chatbots_questions');
         Schema::dropIfExists('chatbots');
     }
 }

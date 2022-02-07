@@ -37,6 +37,13 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -941,6 +948,23 @@
             <!-- Main content -->
             <!-- /.content -->
             <section>
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert"
+                            aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                        {{ $error }}.
+                    </div>
+                @endforeach
+
+                @if (session('message'))
+                    <div class="alert alert-{{ session('alert') }} alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert"
+                            aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-exclamation-triangle"></i> {{ session('alert') }}!</h5>
+                        {{ session('message') }}.
+                    </div>
+                @endif
                 @yield('content')
             </section>
         </div>
@@ -1012,6 +1036,13 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+
+    <!-- Select2 -->
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
     <!-- Page specific script -->
     <script>
         $(function() {
@@ -1030,8 +1061,25 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+
+            //Initialize Select2 Elements
+            $('.select2').select2()
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+
+
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
         });
     </script>
+    @yield('js')
 </body>
 
 </html>

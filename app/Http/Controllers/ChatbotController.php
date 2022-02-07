@@ -34,7 +34,8 @@ class ChatbotController extends Controller
     public function index()
     {
         //
-        return view('chatbot.index');
+        $records= Chatbot::all();
+        return view('chatbot.index', ['records'=>$records]);
 
     }
 
@@ -58,6 +59,14 @@ class ChatbotController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'keyword' => 'required|unique:chatbots,keyword',
+        ]);
+
+        $record= new Chatbot;
+        $record->keyword=$request->keyword;
+        $record->save();
+        return redirect()->action([ChatbotController::class, 'index'])->with(['message' => 'Transaccion exitosa', 'alert' => 'success']);
     }
 
     /**
@@ -100,8 +109,11 @@ class ChatbotController extends Controller
      * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chatbot $chatbot)
+    public function destroy($id)
     {
         //
+        $record = Chatbot::find($id);
+        $record->delete();
+        dd('eliminando');
     }
 }
