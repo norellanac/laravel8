@@ -1,14 +1,14 @@
 @extends('layouts.adminLTE3')
 @section('header-buttons')
     <div class="btn-group breadcrumb float-sm-right">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-lg">
             <i class="fas fa-plus"></i>
             New
         </button>
-        <button type="button" class="btn btn-info">
+        <button type="button" class="btn btn-secondary">
             <i class="fas fa-align-center"></i>
         </button>
-        <button type="button" class="btn btn-info">
+        <button type="button" class="btn btn-secondary">
             <i class="fas fa-align-right"></i>
         </button>
     </div>
