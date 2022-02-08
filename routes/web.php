@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
         Route::resource('chatbot', ChatbotController::class);
+        Route::post('chatbotQuestions', [ChatbotController::class, 'storeQuestions']);
     });
 });
 

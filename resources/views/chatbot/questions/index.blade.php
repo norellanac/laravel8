@@ -31,17 +31,22 @@
                                     <div class="card-header">
                                         <h3 class="card-title">Chatbot</h3>
                                     </div>
-                                    <form method="post" action={{ url('admin/chatbot') }}>
+                                    <form method="post" action={{ url('admin/chatbotQuestions') }}>
                                         @csrf
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label>Add yout keyword:</label>
+                                                <label>Add your question:</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-paragrap"></i></span>
                                                     </div>
-                                                    <input type="text" name="keyword" id="keyword" class="form-control">
+                                                    <input type="text" name="description" id="description"
+                                                        class="form-control">
                                                 </div>
+                                                <input type="hidden" name="chatbot_id" id="chatbot_id"
+                                                    value="{{ $chatbot->id }}">
+
                                             </div>
                                         </div>
 
@@ -105,24 +110,9 @@
                                 <tbody>
                                     @forelse ($records as $record)
                                         <tr>
-                                            <td>{{ $record->keyword }}</td>
-                                            <td>
-
-                                                <div>
-                                                    {{ $record->questions->count() }}
-                                                    <a type="button"
-                                                        href="{{ url('admin/chatbot/' . $record->id . '/edit') }}"
-                                                        class="btn btn-xs btn-secondary"><i class="fas fa-cog"></i></a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    {{ $record->questions->count() }}
-                                                    <a type="button"
-                                                        href="{{ url('admin/chatbot/' . $record->id . '/edit') }}"
-                                                        class="btn btn-xs btn-secondary"><i class="fas fa-cog"></i></a>
-                                                </div>
-                                            </td>
+                                            <td>{{ $record->description }}</td>
+                                            <td>{{ $record->chatbot_id }}</td>
+                                            <td>2</td>
                                             <td>
                                                 <div>
                                                     <a type="button" href="{{ url('admin/chatbot/' . $record->id) }}"
@@ -147,13 +137,13 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div>Delete record {{ $record->keyword }}</div>
+                                                            <div>Delete record {{ $record->description }}
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">Close</button>
-                                                            <form method="post"
-                                                                action="/admin/chatbot/{{ $record->id }}">
+                                                            <form method="post" action="/admin/chatbot/{{ $record->id }}">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-danger"><i

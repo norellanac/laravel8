@@ -6,14 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Chatbot extends Model
+class ChatbotsQuestion extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function questions()
+    public function answers()
     {
-        return $this->hasMany('App\Models\ChatbotsQuestion', 'chatbot_id', );
+        return $this->hasMany('App\Models\ChatbotsAnswer', 'model_id', );
     }
-
-    
 }

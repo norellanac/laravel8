@@ -11,10 +11,16 @@ use BotMan\BotMan\Messages\Attachments\Image;
 use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
 use BotMan\BotMan\Messages\Attachments\Video;
 
+use App\Models\Chatbot;
+use App\Models\ChatbotsQuestion;
+
 use BotMan\BotMan\Cache\LaravelCache;
 
 class BotManController extends Controller
 {
+
+    public $record;
+    public $data;
     /**
      * Place your BotMan logic here.
      */
@@ -48,6 +54,18 @@ class BotManController extends Controller
         ],  new LaravelCache());
 
 
+        $records=Chatbot::with('questions')->get();
+
+        foreach ($records as $record){
+            $this->record=$record;
+            $botman->hears($record->keyword, function ($bot) {
+                foreach (ChatbotsQuestion::where('chatbot_id', $this->record->id)->get() as $data){
+                    $bot->reply($data->description);
+                }
+                
+            });
+        }
+        
         $botman->hears('Hi', function ($bot) {
             $bot->reply('Hello!');
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chatbot;
+use App\Models\ChatbotsQuestion;
 use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
@@ -30,11 +31,12 @@ class ChatbotController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
-        $records= Chatbot::all();
+        $records= Chatbot::with('questions')->get();
         return view('chatbot.index', ['records'=>$records]);
 
     }
@@ -75,7 +77,7 @@ class ChatbotController extends Controller
      * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function show(Chatbot $chatbot)
+    public function show($id)
     {
         //
     }
@@ -83,12 +85,14 @@ class ChatbotController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Chatbot  $chatbot
+     * @param  $id $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chatbot $chatbot)
+    public function edit($id)
     {
-        //
+        //edit chatbot keyword's questions
+        $records= Chatbot::where('id',$id)->with('questions')->get();
+        return view('chatbot.questions.index', ['chatbot'=>$records->first(), 'records'=>$records->first()->questions]);
     }
 
     /**
@@ -114,6 +118,30 @@ class ChatbotController extends Controller
         //
         $record = Chatbot::find($id);
         $record->delete();
-        dd('eliminando');
+        return redirect()->action([ChatbotController::class, 'index'])->with(['message' => 'Record deleted', 'alert' => 'danger']);
+    }
+
+
+    /* ++++++++admin questions to chat+++++++++ */
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeQuestions(Request $request)
+    {
+        //
+        $this->validate($request, [
+            'description' => 'required',
+        ]);
+
+        $record= new ChatbotsQuestion;
+        $record->description=$request->description;
+        $record->chatbot_id=$request->chatbot_id;
+        $record->save();
+        return redirect()->action([ChatbotController::class, 'edit'],  ['chatbot' => $request->chatbot_id])->with(['message' => 'Transaccion exitosa', 'alert' => 'success']);
     }
 }
