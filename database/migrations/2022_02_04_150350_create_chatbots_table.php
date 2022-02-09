@@ -16,6 +16,7 @@ class CreateChatbotsTable extends Migration
         Schema::create('chatbots', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
             $table->string('keyword')->unique()->comment('word or sentence for start an specific chat');
+            $table->boolean('is_conversation')->default(false)->comment('true 1 , false 0');
             $table->softDeletes()->comment('delete record from sistem, not from database');  
             $table->timestamps();
         });
@@ -23,6 +24,7 @@ class CreateChatbotsTable extends Migration
         Schema::create('chatbots_questions', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
             $table->string('description')->comment('text to ask something to user');
+            $table->integer('sort_number')->default(0)->comment('position to sort questions in a conversation');
             $table->softDeletes()->comment('delete record from sistem, not from database');  
             $table->timestamps();
 

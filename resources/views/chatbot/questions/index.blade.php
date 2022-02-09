@@ -39,14 +39,24 @@
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
-                                                                class="fas fa-paragrap"></i></span>
+                                                                class="fas fa-keyboard"></i></span>
                                                     </div>
                                                     <input type="text" name="description" id="description"
                                                         class="form-control">
                                                 </div>
                                                 <input type="hidden" name="chatbot_id" id="chatbot_id"
-                                                    value="{{ $chatbot->id }}">
+                                                    value="{{ $chatbot ? $chatbot->id : null }}">
 
+                                            </div>
+                                            <div class="form-group">
+                                                <label>sort position:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
+                                                    </div>
+                                                    <input type="number" name="sort_number" id="sort_number"
+                                                        class="form-control" step="1">
+                                                </div>
                                             </div>
                                         </div>
 
@@ -108,62 +118,66 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($records as $record)
-                                        <tr>
-                                            <td>{{ $record->description }}</td>
-                                            <td>{{ $record->chatbot_id }}</td>
-                                            <td>2</td>
-                                            <td>
-                                                <div>
-                                                    <a type="button" href="{{ url('admin/chatbot/' . $record->id) }}"
-                                                        class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
-                                                    <a data-toggle="modal" data-target="#modal-delete-{{ $record->id }}"
-                                                        class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></a>
+                                    @if ($records)
+                                        @forelse ($records as $record)
+                                            <tr>
+                                                <td>{{ $record->description }}</td>
+                                                <td>{{ $record->chatbot_id }}</td>
+                                                <td>2</td>
+                                                <td>
+                                                    <div>
+                                                        <a type="button" href="{{ url('admin/chatbot/' . $record->id) }}"
+                                                            class="btn btn-xs btn-info"><i class="fas fa-eye"></i></a>
+                                                        <a data-toggle="modal"
+                                                            data-target="#modal-delete-{{ $record->id }}"
+                                                            class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></a>
 
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <div>
-                                            {{-- modal para confirmar submit --}}
-                                            <div class="modal fade" id="modal-delete-{{ $record->id }}">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Continue...</h4>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <div>
+                                                {{-- modal para confirmar submit --}}
+                                                <div class="modal fade" id="modal-delete-{{ $record->id }}">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Continue...</h4>
 
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div>Delete record {{ $record->description }}
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close</button>
-                                                            <form method="post" action="/admin/chatbot/{{ $record->id }}">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="btn btn-danger"><i
-                                                                        class="fa fa-trash"></i>Delete
-                                                                    record</button>
-                                                            </form>
+                                                            <div class="modal-body">
+                                                                <div>Delete record {{ $record->description }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <form method="post"
+                                                                    action="/admin/chatbot/{{ $record->id }}">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="btn btn-danger"><i
+                                                                            class="fa fa-trash"></i>Delete
+                                                                        record</button>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{-- modal para confirmar submit --}}
                                             </div>
-                                            {{-- modal para confirmar submit --}}
-                                        </div>
-                                    @empty
-                                        <tr>
-                                            <td>Empty table</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td></td>
-                                        </tr>
-                                    @endforelse
+                                        @empty
+                                            <tr>
+                                                <td>Empty table</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td></td>
+                                            </tr>
+                                        @endforelse
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <tr>
