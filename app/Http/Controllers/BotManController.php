@@ -6,6 +6,7 @@ use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
+use App\Conversations\ExampleDBConversation;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\BotMan\Messages\Attachments\Image;
 use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
@@ -26,6 +27,7 @@ class BotManController extends Controller
      */
     public function handle()
     {
+        //*********************config botman******************************** */
         $config = [
             // Your driver-specific configuration
             'web' => [
@@ -52,24 +54,33 @@ class BotManController extends Controller
                 'token' => '5289185607:AAHJFYLAd7QvgoGhgC12AbUh0gNyMtwGxCs',
             ],
         ],  new LaravelCache());
+        //*********************config botman******************************** */
 
 
-        $records=Chatbot::with('questions')->get();
+         /**
+         * Place your BotMan logic here.
+         */
+
+        //**************hears from database records******************** */
+        $records=Chatbot::where('is_conversation', '==', 0)->with('questions')->get();
 
         foreach ($records as $record){
             $this->record=$record;
             $botman->hears($record->keyword, function ($bot) {
-                foreach (ChatbotsQuestion::where('chatbot_id', $this->record->id)->get() as $data){
+                $chat=Chatbot::where('keyword', $bot->getMessage()->getPayload()['message'])->with('questions')->first();
+                foreach ( $chat->questions as $data){
                     $bot->reply($data->description);
                 }
                 
             });
         }
+        //**************hears from database records******************** */
         
         $botman->hears('Hi', function ($bot) {
             $bot->reply('Hello!');
         });
         $botman->hears('chat', BotManController::class.'@startConversation');
+        $botman->hears('speak', BotManController::class.'@startConversationDB');
         
         $botman->hears('call me {name}', function ($bot, $name) {
             $bot->reply('Your name is: '.$name);
@@ -125,21 +136,7 @@ class BotManController extends Controller
         $botman->listen();
     }
 
-    /**
-     * Place your BotMan logic here.
-     */
-    public function askName($botman)
-    {
-        $botman->ask('Hello! What is your Name?', function (Answer $answer) {
-
-            $name = $answer->getText();
-
-            $this->say('Nice to meet you ' . $name);
-        });
-    }
-
-
-
+   
     /**
      * Loaded through routes/botman.php
      * @param  BotMan $bot
@@ -147,6 +144,16 @@ class BotManController extends Controller
     public function startConversation(BotMan $bot)
     {
         $bot->startConversation(new ExampleConversation());
+    }
+
+
+    /**
+     * Loaded through routes/botman.php
+     * @param  BotMan $bot
+     */
+    public function startConversationDB(BotMan $bot)
+    {
+        $bot->startConversation(new ExampleDBConversation());
     }
 
 

@@ -37,7 +37,13 @@ class ChatbotController extends Controller
     {
         //
         $records= Chatbot::with('questions')->get();
-        return view('chatbot.index', ['records'=>$records]);
+        if ($records) {
+            return view('chatbot.index', ['records'=>$records->where('is_conversation', '==', 0), 'conversations'=>$records->where('is_conversation', '==', 1)]);
+        } else {
+            return view('chatbot.index', ['records'=>null]);
+        }
+        
+        
 
     }
 
@@ -60,13 +66,15 @@ class ChatbotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
         $this->validate($request, [
             'keyword' => 'required|unique:chatbots,keyword',
+            'is_conversation' => 'required',
         ]);
 
         $record= new Chatbot;
         $record->keyword=$request->keyword;
+        $record->is_conversation=$request->is_conversation;
         $record->save();
         return redirect()->action([ChatbotController::class, 'index'])->with(['message' => 'Transaccion exitosa', 'alert' => 'success']);
     }
@@ -92,7 +100,13 @@ class ChatbotController extends Controller
     {
         //edit chatbot keyword's questions
         $records= Chatbot::where('id',$id)->with('questions')->get();
-        return view('chatbot.questions.index', ['chatbot'=>$records->first(), 'records'=>$records->first()->questions]);
+        if ($records->first()) {
+            return view('chatbot.questions.index', ['chatbot'=>$records->first(), 'records'=>$records->first()->questions]);
+        } else {
+            return view('chatbot.questions.index', ['chatbot'=>null, 'records'=>null]);
+        }
+        
+        
     }
 
     /**
@@ -136,11 +150,14 @@ class ChatbotController extends Controller
         //
         $this->validate($request, [
             'description' => 'required',
+            'sort_number' => 'required',
+            
         ]);
 
         $record= new ChatbotsQuestion;
         $record->description=$request->description;
         $record->chatbot_id=$request->chatbot_id;
+        $record->sort_number=$request->sort_number;
         $record->save();
         return redirect()->action([ChatbotController::class, 'edit'],  ['chatbot' => $request->chatbot_id])->with(['message' => 'Transaccion exitosa', 'alert' => 'success']);
     }

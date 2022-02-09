@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\Models\User;
+
 class ChatbotsQuestionTest extends TestCase
 {
     /**
@@ -15,7 +17,10 @@ class ChatbotsQuestionTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        $user = User::factory()->create();
+ 
+        $response = $this->actingAs($user, 'web')
+                         ->get('/admin/chatbot/1/edit');
 
         $response->assertStatus(200);
     }
