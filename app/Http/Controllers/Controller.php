@@ -9,6 +9,10 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(title="My First API", version="0.1")
+ * @OA\Get(
+ *     path="/",
+ *     @OA\Response(response="200", description="Display a listing of projects.")
+ * )
  */
 
 class Controller extends BaseController

@@ -1,75 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# laravel8 template
+###### starter template for laravel 8 projects
+- ✨Magic ✨
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Already installed packages
 
-## About Laravel
+- [BotMan](https://botman.io/)
+    - WebChat and Telegram 
+- [Laravel-permission](https://spatie.be/docs/laravel-permission)
+- [Laravel Authentication Log-](https://github.com/yadahan/laravel-authentication-log)
+- [Laravel-activitylog](https://spatie.be/docs/laravel-activitylog/)
+    - Log CRUDS history
+- [Laravel log viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
+    - View errors log in web 
+- [laravel/telescope](https://laravel.com/docs/)
+- [laravel/socialite](https://laravel.com/docs/)
+- [laravel/passport](https://laravel.com/docs/)
+    - Log with email or phone number 
+- [Laravel](https://laravel.com/docs/)
+- [darkaonline/l5-swagger](https://github.com/DarkaOnLine/L5-Swagger)
+    - Documentation API package 
+- Export documents as Markdown, HTML and PDF
+- [AdminLTE Bootstrap Dashboard implemented] (https://adminlte.io/)
+- LandingPage
+- Error Pages
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+laravel8template requires [Node.js](https://nodejs.org/) v10+ to run.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Install the dependencies and devDependencies and start the server.
 
-## Learning Laravel
+```sh
+cd laravel8template
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate:fresh --seed
+php artisan serve
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Development
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Want to contribute? Great!
 
-## Laravel Sponsors
+## Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Laravel packaged by Bitnami
 
-### Premium Partners
+#### What is Laravel?
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+> Laravel is an open source PHP framework for web application development. 
+[Overview of Laravel](https://laravel.com/)
 
-## Contributing
+Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Local workspace
 
-## Code of Conduct
+```console
+$ mkdir ~/myapp && cd ~/myapp
+$ curl -LO https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml
+$ docker-compose up
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Warning**: This quick setup is only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options for the [MariaDB container](https://github.com/bitnami/bitnami-docker-mariadb#readme) for a more secure deployment.
 
-## Security Vulnerabilities
+## Why use Bitnami Images?
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
+* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
+* With Bitnami images the latest bug fixes and features are available as soon as possible.
+* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
+* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
+* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
+* Bitnami container images are released daily with the latest distribution packages available.
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT
 
+**Free Software, Hell Yeah!**
 
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-https://spatie.be/docs/laravel-permission/v5/basic-usage/basic-usage
-https://www.gateforlearner.com/laravel-8-user-roles-and-permissions-tutorial/
+   [dill]: <https://github.com/joemccann/laravel8template>
+   [git-repo-url]: <https://github.com/joemccann/laravel8template.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
+   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Ace Editor]: <http://ace.ajax.org>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [jQuery]: <http://jquery.com>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [AngularJS]: <http://angularjs.org>
+   [Gulp]: <http://gulpjs.com>
 
-https://spatie.be/docs/laravel-activitylog/v4/installation-and-setup
-https://github.com/yadahan/laravel-authentication-log
-
+   [PlDb]: <https://github.com/joemccann/laravel8template/tree/master/plugins/dropbox/README.md>
+   [PlGh]: <https://github.com/joemccann/laravel8template/tree/master/plugins/github/README.md>
+   [PlGd]: <https://github.com/joemccann/laravel8template/tree/master/plugins/googledrive/README.md>
+   [PlOd]: <https://github.com/joemccann/laravel8template/tree/master/plugins/onedrive/README.md>
+   [PlMe]: <https://github.com/joemccann/laravel8template/tree/master/plugins/medium/README.md>
+   [PlGa]: <https://github.com/RahulHP/laravel8template/blob/master/plugins/googleanalytics/README.md>
