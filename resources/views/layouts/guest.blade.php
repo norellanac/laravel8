@@ -19,13 +19,17 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+<body class="hold-transition login-page" style="background-color: #71D24D" <div class="login-box">
+    <div class="justify-content-center">
+        <div class="text-light h1 mt-5 mb-3">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('img/icons/micromoni.jpeg') }}" width="46" class="rounded-circle mr-n2 mt-n3">
+            </a>
+            {{ config('app.name', 'Laravel') }}
         </div>
-        <!-- /.login-logo -->
-        @yield('content')
+    </div>
+    <!-- /.login-logo -->
+    @yield('content')
     </div>
     <!-- /.login-box -->
 

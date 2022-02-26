@@ -7,39 +7,35 @@
             {{ $error }}.
         </div>
     @endforeach
-    <form method="POST" action="{{ route('password.update') }}">
-        @csrf
+    <div class="card">
+        <div class="card-body login-card-body ml-5 mr-5">
+            <form method="POST" action="{{ route('password.update') }}">
+                @csrf
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <!-- Email Address -->
-        <div>
-            <x-label for="email" :value="__('Email')" />
+                <div class="input-group mb-3">
+                    <input id="email" class="form-control form-control-border" type="email" name="email"
+                        value="{{ old('email', $request->email) }}" required autofocus placeholder="Correo electronico" />
+                </div>
+                <div class="input-group mb-3">
+                    <input id="password" class="form-control form-control-border" type="password" name="password" required
+                        placeholder="Nueva Contraseña">
+                </div>
+                <div class="input-group mb-3">
+                    <input id="password_confirmation" type="password" name="password_confirmation" required
+                        class="form-control form-control-border" placeholder="Confirmar Contraseña">
+                </div>
 
-            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)"
-                required autofocus />
+                <!-- /.col -->
+                <div class="">
+                    <button type="submit" class="btn btn-warning btn-block btn-sm"><span class="text-light">Actualizar
+                            contraseña
+                        </span></button> </button>
+                </div>
+            </form>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-label for="password" :value="__('Password')" />
-
-            <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation"
-                required />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-button>
-                {{ __('Reset Password') }}
-            </x-button>
-        </div>
-    </form>
+        <!-- /.login-card-body -->
+    </div>
 @endsection
