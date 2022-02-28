@@ -30,7 +30,7 @@
 
                 <!-- /.col -->
                 <div class="">
-                    <button type="submit" class="btn btn-warning btn-block btn-sm"><span class="text-light">Actualizar
+                    <button type="submit" class="btn btn-danger btn-block btn-sm"><span class="text-light">Actualizar
                             contraseña
                         </span></button> </button>
                 </div>

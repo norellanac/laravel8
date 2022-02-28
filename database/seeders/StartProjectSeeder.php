@@ -1973,7 +1973,7 @@ class StartProjectSeeder extends Seeder
             
 
             $record = new Role();
-            $record->name = 'Usuario';
+            $record->name = 'Cliente';
             $record->save();
         }
 
@@ -1985,6 +1985,14 @@ class StartProjectSeeder extends Seeder
             $record->password = Hash::make('12341234');
             $record->email="norellana@homeland.com.gt";
             $record->phone =33120413;
+            $record->save();
+            $record->syncRoles('SuperAdministrador');
+
+            $record = new User;
+            $record->name = 'Admin';
+            $record->password = Hash::make('12341234');
+            $record->email="gcastillo@homeland.com.gt";
+            $record->phone =37612941;
             $record->save();
             $record->syncRoles('SuperAdministrador');
         }

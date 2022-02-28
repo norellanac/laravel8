@@ -20,7 +20,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-warning btn-block"><span class="text-light">Reiniciar
+                        <button type="submit" class="btn btn-danger btn-block"><span class="text-light">Reiniciar
                                 contrasaeña</span></button>
                     </div>
                     <!-- /.col -->

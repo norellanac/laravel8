@@ -81,7 +81,11 @@
 
                             <p>
                                 {{ Auth::user()->name }}
-                                <small>rol</small>
+                                @if (!empty(Auth::user()->getRoleNames()))
+                                    @foreach (Auth::user()->getRoleNames() as $v)
+                                        <small>{{ $v }}</small>
+                                    @endforeach
+                                @endif
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -119,10 +123,10 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="mt-2 mb-2 d-flex">
+                <div class="user-panel mt-2 pb-2 mb-2 d-flex">
                     <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2 mr-3"
-                            alt="User Image" width="30">
+                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -132,7 +136,7 @@
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Buscar..."
                             aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
@@ -148,26 +152,30 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p class="text">Inicio</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>
                                     Usuarios
-                                    <i class="right fas fa-angle-left"></i>
+                                    <i class="right fas fa-angle-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/roles') }}"
+                                    <a href="/admin/roles"
                                         class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
                                         <p>Perfiles de acceso</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/users') }}"
+                                    <a href="/admin/users"
                                         class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
                                         <p>Usuarios</p>
                                     </a>
                                 </li>
@@ -177,37 +185,51 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>
-                                    Configuraciones
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    Configuracion
+                                    <i class="right fas fa-angle-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/roles') }}"
+                                    <a href="/admin/categoriaCliente"
                                         class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Link </p>
+                                        <p>Categoria cliente</p>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/porcentajePorIngresos"
+                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        <p>Porcentaje por ingresos </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/variablesFinanciera"
+                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        <p>Variables financiera </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/TipoDeCredito"
+                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        <p>Tipo de Credito </p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-header">Otros</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Clientes
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <i class="fas fa-angle-right right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/roles') }}"
+                                    <a href="/admin/clientes"
                                         class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Link </p>
+                                        <p>Clientes</p>
                                     </a>
                                 </li>
                             </ul>
@@ -217,16 +239,14 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Operaciones
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <i class="fas fa-angle-right right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/roles') }}"
+                                    <a href="/admin/operaciones"
                                         class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Link </p>
+                                        <p>Operaciones </p>
                                     </a>
                                 </li>
                             </ul>
@@ -236,32 +256,29 @@
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>
                                     Reportes
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <i class="fas fa-angle-right right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/roles') }}"
+                                    <a href="/admin/reportes"
                                         class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Link </p>
+                                        <p>Reportes </p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-comments"></i>
                                 <p>
                                     Chatbot Admin
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <i class="fas fa-angle-right right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/admin/chatbot') }}"
+                                    <a href="/admin/chatbot"
                                         class="nav-link {{ request()->is('admin/chatbot') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Palabras Clave </p>
@@ -279,11 +296,11 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header sidebar-dark-primary navbar-dark">
+            <div class="content-header sidebar-dark-primary navbar-dark mt-5">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="row">
                         <div class="col-sm-6">
-                            {{-- <h1 class="m-0">{{ substr(request()->getRequestUri(), 1) }}</h1> --}}
+                            <span class="m-0 text-light">{{ substr(request()->getRequestUri(), 1) }}</span>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             @yield('header-buttons')
@@ -295,7 +312,7 @@
 
             <!-- Main content -->
             <!-- /.content -->
-            <section>
+            <section class="mt-4">
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert"
@@ -409,11 +426,12 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-            $("#table2").DataTable({
+            $("#myDataTable").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "paging": false,
+                "info": false,
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
             //Initialize Select2 Elements

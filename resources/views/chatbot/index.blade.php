@@ -1,15 +1,17 @@
 @extends('layouts.adminLTE3')
 @section('header-buttons')
     <div class="btn-group breadcrumb float-sm-right">
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-lg">
+        <button type="button" class="btn bg-gradient-secondary" data-toggle="modal" data-target="#modal-lg">
             <i class="fas fa-plus"></i>
-            New
+            Nuevo
         </button>
-        <button type="button" class="btn btn-secondary">
-            <i class="fas fa-align-center"></i>
+        <button type="button" class="btn bg-gradient-secondary" data-toggle="modal" data-target="#modal-lg">
+            <i class="fas fa-sync"></i>
+            Refrescar
         </button>
-        <button type="button" class="btn btn-secondary">
-            <i class="fas fa-align-right"></i>
+        <button type="button" class="btn bg-gradient-secondary" data-toggle="modal" data-target="#modal-lg">
+            <i class="fas fa-times"></i>
+            Cerrar
         </button>
     </div>
 @endsection

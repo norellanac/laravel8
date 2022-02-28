@@ -3,7 +3,7 @@
     @foreach ($errors->all() as $error)
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Atención!</h5>
             {{ $error }}.
         </div>
     @endforeach
@@ -12,17 +12,16 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input class="form-control form-control-border" placeholder="Usuario / Teléfono" id="email" type="email"
-                        name="email" value="{{ old('email') }}" required autofocus />
+                    <input class="form-control form-control-border" placeholder="Usuario / Teléfono" id="email" type="text"
+                        name="email" required autofocus {{ config('app.debug') ? "value=gcastillo@homeland.com.gt" : '' }} />
                 </div>
                 <div class="input-group mb-3">
                     <input id="password" type="password" name="password" required class="form-control form-control-border"
-                        placeholder="Contraseña">
+                        placeholder="Contraseña" {{ config('app.debug') ? "value='12341234'" : '' }}>
                 </div>
-
                 <!-- /.col -->
                 <div class="">
-                    <button type="submit" class="btn btn-warning btn-block btn-sm"><span class="text-light">Iniciar
+                    <button type="submit" class="btn btn-danger btn-block btn-sm"><span class="text-light">Iniciar
                             Sesión</span></button> </button>
                 </div>
                 <!-- /.col -->
