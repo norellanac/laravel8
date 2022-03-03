@@ -51,8 +51,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
-                height="60" width="60">
+            <img class="animation__shake" src="{{ asset('img/icons/micromoni.jpeg') }}" alt="AdminLTELogo" height="60"
+                width="60">
         </div>
 
         <!-- Navbar -->
@@ -114,7 +114,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link bg-success">
+            <a href="{{ url('/dashboard') }}" class="brand-link bg-success">
                 <img src="{{ asset('img/icons/micromoni.jpeg') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
@@ -169,13 +169,13 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/roles"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Perfiles de acceso</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/users"
-                                        class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/users') ? 'active' : '' }}">
                                         <p>Usuarios</p>
                                     </a>
                                 </li>
@@ -192,26 +192,26 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/categoriaCliente"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Categoria cliente</p>
                                         </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/porcentajePorIngresos"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Porcentaje por ingresos </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/variablesFinanciera"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Variables financiera </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/TipoDeCredito"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Tipo de Credito </p>
                                     </a>
                                 </li>
@@ -228,7 +228,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/clientes"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Clientes</p>
                                     </a>
                                 </li>
@@ -245,7 +245,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/operaciones"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Operaciones </p>
                                     </a>
                                 </li>
@@ -262,7 +262,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/reportes"
-                                        class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/roles') ? 'active' : '' }}">
                                         <p>Reportes </p>
                                     </a>
                                 </li>
@@ -279,7 +279,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/chatbot"
-                                        class="nav-link {{ request()->is('admin/chatbot') ? 'active' : '' }}">
+                                        class="nav-link ml-5 {{ request()->is('admin/chatbot') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Palabras Clave </p>
                                     </a>
@@ -400,7 +400,8 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
     <!-- Select2 -->
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
@@ -432,6 +433,11 @@
                 "autoWidth": false,
                 "paging": false,
                 "info": false,
+                "language": {
+                    "zeroRecords": "Nothing found - sorry",
+                    "infoEmpty": "No records available, sorry",
+                    "search": "Buscar"
+                }
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
             //Initialize Select2 Elements

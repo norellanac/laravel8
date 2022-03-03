@@ -13,12 +13,17 @@
                 @csrf
                 <div class="input-group mb-3">
                     <input class="form-control form-control-border" placeholder="Usuario / Teléfono" id="email" type="text"
-                        name="email" required autofocus {{ config('app.debug') ? "value=gcastillo@homeland.com.gt" : '' }} />
+                        name="email" required autofocus
+                        {{ config('app.debug') ? 'value=gcastillo@homeland.com.gt' : '' }} />
                 </div>
                 <div class="input-group mb-3">
                     <input id="password" type="password" name="password" required class="form-control form-control-border"
-                        placeholder="Contraseña" {{ config('app.debug') ? "value='12341234'" : '' }}>
+                        placeholder="Contraseña" {{ config('app.debug') ? 'value=12341234' : '' }}>
+                    <a class="nav-link" onclick="showInputPassword()">
+                        <i class="fas fa-eye"></i>
+                    </a>
                 </div>
+
                 <!-- /.col -->
                 <div class="">
                     <button type="submit" class="btn btn-danger btn-block btn-sm"><span class="text-light">Iniciar

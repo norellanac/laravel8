@@ -1,4 +1,4 @@
-<!-- 
+<!--
 THEME: Small Apps | Bootstrap App Landing Template
 VERSION: 1.0.0
 AUTHOR: Themefisher
@@ -53,14 +53,18 @@ FACEBOOK: https://www.facebook.com/themefisher
 
     <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="{{ asset('landingPage/images/logo.png') }}" alt="logo"></a>
+            <a class="navbar-brand" href="index.html"><img src="{{ asset('landingPage/images/logo.png') }}"
+                    alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="ti-menu"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown active">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('login') }}">Ingresar</a>
+                    </li>
+                    <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home
                             <span><i class="ti-angle-down"></i></span>
                         </a>
@@ -71,8 +75,9 @@ FACEBOOK: https://www.facebook.com/themefisher
                             <li><a class="dropdown-item active3" href="landingPage/homepage-3.html">Homepage 3</a></li>
 
                             <li class="dropdown dropdown-submenu dropright">
-                                <a class="dropdown-item dropdown-toggle" href="landingPage/#!" id="dropdown0301" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+                                <a class="dropdown-item dropdown-toggle" href="landingPage/#!" id="dropdown0301"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub
+                                    Menu</a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdown0301">
                                     <li><a class="dropdown-item" href="landingPage/index.html">Submenu 11</a></li>
@@ -90,8 +95,10 @@ FACEBOOK: https://www.facebook.com/themefisher
                             <li><a class="dropdown-item @@team" href="landingPage/team.html">Team</a></li>
                             <li><a class="dropdown-item @@career" href="landingPage/career.html">Career</a></li>
                             <li><a class="dropdown-item @@blog" href="landingPage/blog.html">Blog</a></li>
-                            <li><a class="dropdown-item @@blogSingle" href="landingPage/blog-single.html">Blog Single</a></li>
-                            <li><a class="dropdown-item @@privacy" href="landingPage/privacy-policy.html">Privacy</a></li>
+                            <li><a class="dropdown-item @@blogSingle" href="landingPage/blog-single.html">Blog
+                                    Single</a></li>
+                            <li><a class="dropdown-item @@privacy" href="landingPage/privacy-policy.html">Privacy</a>
+                            </li>
                             <li><a class="dropdown-item @@faq" href="landingPage/FAQ.html">FAQ</a></li>
                             <li><a class="dropdown-item" href="landingPage/sign-in.html">Sign In</a></li>
                             <li><a class="dropdown-item" href="landingPage/sign-up.html">Sign Up</a></li>
@@ -199,8 +206,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="col-lg-6 ml-auto justify-content-center">
                     <!-- Feature Mockup -->
                     <div class="image-content" data-aos="fade-right">
-                        <img class="img-fluid" src="{{ asset('landingPage/images/feature/feature-new-01.jpg') }}"
-                            alt="iphone">
+                        <img class="img-fluid"
+                            src="{{ asset('landingPage/images/feature/feature-new-01.jpg') }}" alt="iphone">
                     </div>
                 </div>
                 <div class="col-lg-6 mr-auto align-self-center">
@@ -225,7 +232,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </p>
                         <ul class="list-inline meta">
                             <li class="list-inline-item">
-                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}" alt="">
+                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                    alt="">
                             </li>
                             <li class="list-inline-item">Jonathon Andrew , Themefisher.com</li>
                         </ul>
@@ -260,7 +268,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                         </p>
                         <ul class="list-inline meta">
                             <li class="list-inline-item">
-                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}" alt="">
+                                <img src="{{ asset('landingPage/images/testimonial/feature-testimonial-thumb.jpg') }}"
+                                    alt="">
                             </li>
                             <li class="list-inline-item">Jonathon Andrew , Themefisher.com</li>
                         </ul>
@@ -269,8 +278,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="col-lg-6 mr-auto justify-content-center">
                     <!-- Feature mockup -->
                     <div class="image-content" data-aos="fade-left">
-                        <img class="img-fluid" src="{{ asset('landingPage/images/feature/feature-new-02.jpg') }}"
-                            alt="ipad">
+                        <img class="img-fluid"
+                            src="{{ asset('landingPage/images/feature/feature-new-02.jpg') }}" alt="ipad">
                     </div>
                 </div>
             </div>
@@ -534,7 +543,8 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="row">
                     <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
                         <div class="block">
-                            <a href="index.html"><img src="{{ asset('landingPage/images/logo-alt.png') }}" alt="footer-logo"></a>
+                            <a href="index.html"><img src="{{ asset('landingPage/images/logo-alt.png') }}"
+                                    alt="footer-logo"></a>
                             <!-- Social Site Icons -->
                             <ul class="social-icon list-inline">
                                 <li class="list-inline-item">

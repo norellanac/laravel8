@@ -26,7 +26,7 @@
 
                     <table id="myDataTable" class="table table-bordered table-striped">
                         <div class="row">
-                            <div class="col-6 mb-n5 d-none">
+                            <div class="col-6 mb-n4 d-none">
                                 <div class="form-group">
                                     <label>Sort Order:</label>
                                     <select class="select2" style="width: 100%;">
@@ -134,7 +134,4 @@
 
 
     {!! $roles->render() !!} --}}
-
-
-    <p class="text-center text-primary"><small>Tutorial by GateForLearner.com</small></p>
 @endsection

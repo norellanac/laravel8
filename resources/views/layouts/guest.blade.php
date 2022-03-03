@@ -28,9 +28,11 @@
             {{ config('app.name', 'Laravel') }}
         </div>
     </div>
-    <div>
-        <!-- /.login-logo -->
-        @yield('content')
+    <div class="row">
+        <div class="col-10 offset-1 offset-md-0 offset-lg-0 col-xs-10 col-md-12 col-lg-12">
+            <!-- /.login-logo -->
+            @yield('content')
+        </div>
     </div>
     <!-- /.login-box -->
 
@@ -40,6 +42,16 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <script>
+        function showInputPassword() {
+            let elem = document.getElementById('password');
+            if (elem.type == "text") {
+                elem.type = "password";
+            } else {
+                elem.type = "text";
+            }
+        }
+    </script>
 </body>
 
 </html>
