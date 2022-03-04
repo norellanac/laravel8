@@ -1945,10 +1945,18 @@ class StartProjectSeeder extends Seeder
             'role-create',
             'role-edit',
             'role-delete',
-            'blog-list',
-            'blog-create',
-            'blog-edit',
-            'blog-delete'
+            'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',
+            'chatbot-list',
+            'chatbot-create',
+            'chatbot-edit',
+            'chatbot-delete',
+            'chatbot_answer-list',
+            'chatbot_answer-create',
+            'chatbot_answer-edit',
+            'chatbot_answer-delete',
          ];
 
          foreach ($permissions as $permission) {

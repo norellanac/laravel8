@@ -321,14 +321,13 @@
                         {{ $error }}.
                     </div>
                 @endforeach
-
-                @if (session('message'))
-                    <div class="alert alert-{{ session('alert') }} alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert"
-                            aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-exclamation-triangle"></i> {{ session('alert') }}!</h5>
-                        {{ session('message') }}.
-                    </div>
+                @if ($message = Session::get('message'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> Listo!</h5>
+                    {{ $message }}.
+                </div>
                 @endif
                 @yield('content')
             </section>

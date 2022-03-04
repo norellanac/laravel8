@@ -9,6 +9,11 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    /**
+     * en este controlador son importantes las vistas de creacion y edicion de permisos
+     */
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,7 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
+        $roles = Role::all();
         return view('roles.index',['records'=>$roles]);
     }
 
@@ -41,7 +46,7 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        return view('roles.create',['permission' =>$permission]);
     }
 
     /**
@@ -61,7 +66,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
-                        ->with('success','Role created successfully');
+                        ->with('message','Nuevo perfil de usuario creado');
     }
     /**
      * Display the specified resource.
@@ -88,13 +93,9 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-            ->all();
-
-        return view('roles.edit',compact('role','permission','rolePermissions'));
-    }
+        $permission = Permission::all();
+        return view('roles.edit',['role'=>$role,'permission' => $permission, 'rolePermissions' => $role->permissions->pluck('id')->toArray()]);
+     }
 
     /**
      * Update the specified resource in storage.
