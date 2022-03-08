@@ -29,9 +29,8 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $records = User::all();
+        return view('users.index',['records'=>$records]);
     }
 
     /**
@@ -40,6 +39,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+        //
+        $records = User::all();
+        return view('users.create',['records'=>$records]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createDocuments()
     {
         //
         $roles = Role::pluck('name','name')->all();

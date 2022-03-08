@@ -72,16 +72,19 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable()->comment('');
             $table->string('password')->comment(''); 
             $table->string('phone', 50)->nullable()->unique()->comment('');
+            $table->string('emergency_phone', 50)->nullable()->comment('');
             $table->date('birthday')->nullable()->comment('fecha de nacimiento'); 
             $table->string('url_image')->nullable()->comment('url de la imagen');
             $table->text('address')->nullable()->comment('direccion de residencia');
             $table->integer('gender')->default(3)->comment('genro 0-no binario, 1-hombre, 2-Mujer, 3-prefiero no decirlo');
             $table->string('job_position')->nullable()->comment('');
             $table->bigInteger('legal_id')->unique()->nullable()->comment('Codigo de identificacion DPI');
+            $table->integer('legal_id_city')->nullable()->comment('id,de municipio/ ciudad');
+            $table->integer('legal_id_type')->nullable()->comment('1-dpi, 2-pasaporte, 3 otro');
             $table->boolean('is_verified_id')->default(false)->comment('true 1 , false 0');
             $table->integer('civil_status')->default(3)->comment('0-soltero, 1-casado, 2-viudo, 3-prefiero no decirlo');
             $table->string('education')->nullable()->comment('Maestria, Universidad, Diversificado, Basicos');
-            
+            $table->float('salary')->nullable()->comment('salario');
 
             /*******codigo de pais de nacimiento*******/
             $table->unsignedBigInteger('country_id')->nullable();
